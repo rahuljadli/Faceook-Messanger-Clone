@@ -5,7 +5,7 @@ import React from 'react';
 import classes from './Message.module.css';
 
 export default function Message(props) {
-    const isUser=props.userName==props.message.userName;
+    const isUser=props.userName==props.message.username;
     console.log("Is user",isUser)
     return (
         // Below part is like only if condition
@@ -18,7 +18,7 @@ export default function Message(props) {
         <Typography color="white"
         variant="h5"
         component="h2">
-         {props.message.userName}:{props.message.message}
+         {props.message.username}:{props.message.message}
         </Typography>
        
       </CardContent>

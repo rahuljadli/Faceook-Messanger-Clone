@@ -3,14 +3,13 @@ import { FormControl,InputLabel,Button,Input } from '@material-ui/core';
 import './App.css';
 import { useEffect,useState } from "react";
 import Message from './Container/Message';
+import db from './firebase';
+import firebase from 'firebase';
 
 function App() {
   const [userInput,setUserInput]=useState('')
   
-  const [userMessages,setUserMessages]=useState([{
-    userName:"rohan",
-    message:"Hi rahul"
-  }])
+  const [userMessages,setUserMessages]=useState([])
   const [userName,setUserName]=useState('')
 
   useEffect(()=>{
@@ -18,14 +17,24 @@ function App() {
   },[])
 
 
+  // For fetching messages from the server
+  useEffect(()=>{
+db.collection("messages").
+orderBy("timestamp","asc").onSnapshot(snapshot=>{
+  setUserMessages(snapshot.docs.map(doc=>doc.data()))
+})
+
+
+  },[])
   const submitHandler=(event)=>{
     event.preventDefault();
 
-
-    setUserMessages([...userMessages,{
-      userName:userName,
-      message:userInput
-    }]);
+    db.collection("messages").add({
+      username:userName,
+      message:userInput,
+      timestamp:firebase.firestore.FieldValue.serverTimestamp()
+    
+    })
     setUserInput('');
 
   }
