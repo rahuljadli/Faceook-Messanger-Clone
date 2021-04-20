@@ -2,16 +2,7 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
 .App-header {
   background-color: #282c34;
@@ -24,9 +15,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
 
 @keyframes App-logo-spin {
   from {
@@ -35,4 +23,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+.app_Button{
+  position: relative;
+}
+
+.app_form{
+  position:fixed;
+  bottom: 20px;
+  background-color: azure;
+  padding: 10px;
+  z-index: 1;
+  width: 100%;
 }
