@@ -6,6 +6,8 @@ import Message from './Container/Message';
 import db from './firebase';
 import FlipMove from 'react-flip-move';
 import firebase from 'firebase/app';
+import SendIcon from '@material-ui/icons/Send';
+import { IconButton } from '@material-ui/core';
 
 function App() {
   const [userInput,setUserInput]=useState('')
@@ -53,20 +55,24 @@ orderBy("timestamp","asc").onSnapshot(snapshot=>{
  } 
   </FlipMove>
     
-    <form className="app_form">    <FormControl>
-  <InputLabel htmlFor="my-input">Type</InputLabel>
-  <Input id="my-input" 
+    <form className="app_form">    
+    <FormControl className="app__formControl">
+  <InputLabel htmlFor="my-input">Enter the Message..</InputLabel>
+  <Input
+  className="app__input" id="my-input" 
   aria-describedby="my-helper-text"
   value={userInput}
   onChange={(event)=> setUserInput(event.target.value)}
    />
-  <Button variant="contained"
+  <IconButton
+  classes="app__iconButton"
+  variant="contained"
   type="submit"
   color="primary"
   className="app_Button"
   onClick={submitHandler}
   disabled={!userInput}
-  href="#contained-buttons" > Send Message</Button>
+  href="#contained-buttons"  ><SendIcon/></IconButton>
 
  </FormControl>
  </form>

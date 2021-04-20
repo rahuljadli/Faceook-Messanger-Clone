@@ -36,3 +36,13 @@
   z-index: 1;
   width: 100%;
 }
+.app__formControl{
+  display: flex !important;
+  flex-direction: row !important;
+}
+.app__input{
+  flex: 1;
+}
+.app_iconButton{
+  flex:0;
+}
